@@ -1,0 +1,35 @@
+spring:
+#  rabbitmq:
+#    host: ${RABBIT_MQ_HOST:8.133.172.35}
+#    port: ${RABBIT_MQ_PORT:5672}
+#    username: ${RABBIT_MQ_USERNAME:guest}
+#    password: ${RABBIT_MQ_PASSWORD:guest}
+#  redis:
+#    host: ${REDIS_HOST:8.133.172.35}
+#    port: ${REDIS_PORT:6379}
+#    password: ${REDIS_PASSWORD:Wj1987@0628}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:${DATASOURCE_DBTYPE:mysql}://${DATASOURCE_HOST:8.133.172.35}:${DATASOURCE_PORT:3306}/sc_auth?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=GMT
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:Wj@126.com}
+#  zipkin:
+#    enabled: true
+#    sender:
+#      type: rabbit
+#  sleuth:
+#    sampler:
+#      probability: 1.0
+  mvc:
+    throw-exception-if-no-handler-found: true
+  main:
+    allow-circular-references: true
+  #jwt的密钥
+  security:
+    oauth2:
+      jwt:
+        signingKey: 123456
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true

@@ -1,0 +1,12 @@
+spring:
+  profiles: gateway
+  security:
+    oauth2:
+      jwt:
+        signingKey: 123456
+gate:
+  ignore:
+    authentication:
+      startWith: /oauth,/open
+
+

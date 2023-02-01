@@ -1,0 +1,40 @@
+spring:
+  profiles:
+    include: gateway
+  cloud:
+    gateway:
+      routes:
+        #路由的ID 唯一即可
+        - id: organization
+          #路由的地址
+          uri: lb://organization
+          #uri:  lb://service-name
+          predicates:
+            - Path=/organization/**
+          filters:
+            - StripPrefix=1
+        - id: authorization-server
+          #路由的地址
+          uri: lb://authorization-server
+          #uri:  lb://service-name
+          predicates:
+            - Path=/authorization-server/**
+          filters:
+            - StripPrefix=1
+        - id: authentication-server
+          #路由的地址
+          uri: lb://authentication-server
+          #uri:  lb://service-name
+          predicates:
+            - Path=/authentication-server/**
+          filters:
+            - StripPrefix=1
+              
+              
+logging:
+  level:
+    com.github.wujie0628.auth.client.AuthProvider: DEBUG
+#gate:
+#  ignore:
+#    authentication:
+#      startWith: /oauth,/open,/v2/api-docs

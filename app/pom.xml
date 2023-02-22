@@ -12,7 +12,7 @@
     <artifactId>app</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>service-search</module>
+        <module>service-poetry</module>
         <module>app-gateway</module>
     </modules>
 

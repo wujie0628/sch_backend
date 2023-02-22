@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>organization</module>
+        <module>auth</module>
+        <module>sys-gateway</module>
     </modules>
 
     <properties>

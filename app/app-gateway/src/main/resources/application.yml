@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    include: app-gateway
+  cloud:
+    gateway:
+      routes:
+        #路由的ID 唯一即可
+        - id: search
+          #路由的地址
+          uri: lb://search
+#          uri: http://localhost:8011/
+          #uri:  lb://service-name
+          predicates:
+            - Path=/search/**
+          filters:
+            - StripPrefix=1
+  main:
+    allow-circular-references: true
+#gate:
+#  ignore:
+#    authentication:
+#      startWith: /oauth,/open,/v2/api-docs
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

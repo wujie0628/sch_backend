@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 /**
  * <p>
  *  前端控制器
@@ -26,9 +24,9 @@ public class PoetryInfoController {
     @Autowired
     private IPoetryInfoService poetryInfoService;
 
-    @GetMapping("/test")
-    private List<PoetryInfo> test() {
-        return poetryInfoService.list();
+    @GetMapping("/getPoetryInfoById")
+    private PoetryInfo getPoetryInfoById(int id) {
+        return poetryInfoService.getById(id);
     }
 
 }

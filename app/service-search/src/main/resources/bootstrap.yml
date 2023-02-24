@@ -1,8 +1,8 @@
 server:
-  port: ${SERVER_PORT:8011}
+  port: ${SERVER_PORT:8081}
 spring:
   application:
-    name: poetry # 服务名称
+    name: search # 服务名称
   profiles:
     active: dev #开发环境，这里是dev
   cloud:

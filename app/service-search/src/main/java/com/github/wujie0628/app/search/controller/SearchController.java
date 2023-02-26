@@ -1,7 +1,11 @@
 package com.github.wujie0628.app.search.controller;
 
+import cn.hutool.json.JSON;
+import cn.hutool.json.JSONArray;
+import cn.hutool.json.JSONUtil;
 import com.github.wujie0628.app.poetry.es.feign.PoetryEsClient;
 import com.github.wujie0628.app.poetry.feign.PoetryClient;
+import com.github.wujie0628.app.search.config.KafkaInitialConfiguration;
 import com.github.wujie0628.common.entity.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -23,7 +27,7 @@ public class SearchController {
     @GetMapping("/associative")
     private Result associative(String text) {
         Result r = poetryEsClient.associative(text);
-//        kafkaTemplate.send("poetry_search_info", r.getData());
+        kafkaTemplate.send(KafkaInitialConfiguration.TOPPIC_NAME, JSONUtil.toJsonStr(r.getData()));
         return r;
 //        return poetryClient.associative(text);
     }

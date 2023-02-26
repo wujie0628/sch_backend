@@ -18,6 +18,22 @@ spring:
     port: ${RABBIT_MQ_PORT:5672}
     username: ${RABBIT_MQ_USERNAME:guest}
     password: ${RABBIT_MQ_PASSWORD:guest}
+
+  kafka:
+    # kafka服务地址
+    bootstrap-servers: 8.133.172.35:9092
+    producer:
+      # 生产者消息key序列化方式
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # 生产者消息value序列化方式
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      # 消费者组
+      group-id: poetry-consumer-group
+      # 消费者消息value反序列化方式
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # 消费者消息value反序列化方式
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true

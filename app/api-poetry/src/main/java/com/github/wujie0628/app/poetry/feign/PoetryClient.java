@@ -1,6 +1,7 @@
 package com.github.wujie0628.app.poetry.feign;
 
 
+import com.github.wujie0628.app.poetry.entity.po.PoetryInfo;
 import com.github.wujie0628.common.entity.vo.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,4 +14,7 @@ public interface PoetryClient {
 
     @GetMapping("/poetry-paragraph/getSearchContent")
     Result getSearchContent(@RequestParam(name="id") int id);
+
+    @GetMapping("/poetry-info/getPoetryInfoById")
+    PoetryInfo getPoetryInfoById(@RequestParam(name="id") int id);
 }

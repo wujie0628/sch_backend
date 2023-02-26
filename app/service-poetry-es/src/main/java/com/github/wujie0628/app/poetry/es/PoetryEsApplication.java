@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import static com.github.wujie0628.app.poetry.es.constant.ProjectConstant.MAPPER_PACKAGE;
@@ -20,6 +21,7 @@ import static com.github.wujie0628.app.poetry.es.constant.ProjectConstant.MAPPER
  */
 @EnableCaching
 @SpringBootApplication(exclude= {DruidDataSourceAutoConfigure.class})
+@EnableFeignClients(basePackages = {"com.github.wujie0628.app.poetry.feign"})
 public class PoetryEsApplication extends SpringBootServletInitializer {
 
   public static void main(final String[] args) {

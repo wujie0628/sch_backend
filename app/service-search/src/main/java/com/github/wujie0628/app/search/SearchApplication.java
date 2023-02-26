@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableCaching
 @SpringBootApplication
 @EnableTransactionManagement
-@EnableFeignClients(basePackages = {"com.github.wujie0628.app.poetry.feign"})
+@EnableFeignClients(basePackages = {"com.github.wujie0628.app.poetry.feign", "com.github.wujie0628.app.poetry.es.feign"})
 public class SearchApplication  extends SpringBootServletInitializer {
     public static void main(final String[] args) {
         SpringApplication.run(SearchApplication.class, args);

@@ -1,9 +1,7 @@
 package com.github.wujie0628.app.poetry.es.controller;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.elasticsearch.core.GetResponse;
-import co.elastic.clients.elasticsearch.core.SearchResponse;
-import com.github.wujie0628.app.poetry.es.entity.vo.PoetryParagraphVO;
+import com.github.wujie0628.app.poetry.es.service.IPoetryParagraphService;
 import com.github.wujie0628.common.entity.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,12 +17,13 @@ public class PoetryParagraphController {
     @Autowired
     ElasticsearchClient client;
 
+    @Autowired
+    IPoetryParagraphService poetryParagraphService;
+
     @GetMapping("/associative")
     private Result associative(String text) throws IOException {
 
-        GetResponse<PoetryParagraphVO> response = client.get(e -> e.index("poetry_paragraph").id("1001"), PoetryParagraphVO.class);
-
-        return Result.success(response.source());
+        return Result.success(poetryParagraphService.getAssociativeText(text));
     }
 
 }

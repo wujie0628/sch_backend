@@ -17,6 +17,7 @@
         <module>api-poetry</module>
         <module>service-search</module>
         <module>service-poetry-es</module>
+        <module>api-poetry-es</module>
     </modules>
 
     <properties>
